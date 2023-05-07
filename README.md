@@ -25,8 +25,26 @@ $$E = \sqrt{(1/n)*\sum_{j=1}^n (f(x_j)-y_j)^2}$$
 Then we use the MNIST dataset, which is a series of handwritten digit. We need to compute the first 20 PCA modes of images and build a feed-forward neural network to classify the digits. We also need to compute the results of the neural network with other classifiers such as LSTM, SVM, and decision trees. 
 
 ## Theoretical Background
-The first important 
+The first important concept that is involved in this assignment is **feedforward neural netowrks**. 
+[Feed foward neural network](https://en.wikipedia.org/wiki/Feedforward_neural_network) is a mechanism that the inpute signals gets fed foward into a neural network. It pass through different layers of the network in form of activations and results in the form of some classfiication on the output layer. Below is a animatin illustrating feed forward neural network 
+![nagesh-pca-1](https://vitalflux.com/wp-content/uploads/2020/10/feed_forward_neural_network-1.gif)
+
+1. **Layers** The figure shown alove has four different layers. one input layer, two hidden layer, and one output layer. 
+2. **Input fed into input layer** there are four input variables which are fed into different nodes in the neural network throug input layer.
+3. **Activations in the hidden layer** the sum of input signals combined with weights and bias element are fed into all neurons of the hidden layers.
+in each node, all incoming values are added together and fed into an activation function. 
+4. **Output in the final layer** In the last step, the activation signals from the hidden layers are combined with weights and fed into the output layer. At each node, all the incoming values are added together in different nodes and then processed with a function to output the probabilities. 
+
+### There are also other important concept that are previously used in other assignments. Since it was introduced before, I will beiefly give a quick explaination on these concepts. 
+1. **Principle component analysis**: This is used for dimentionality reduction. It transforms a dataset of potentially correlated variables into a set of linearly uncorrelated variables.
+2. **Support vector machines**: This is an algorithm that is used for classification and regression. It finds a hyperplane that maximizes the margin between the classes in data. 
+3. **Decision trees**: It works by recursively partitioning the data based on the values of the input features in order to maximize the informatin gain at each node.
+
 ## Algorithm Implementation and Development 
+There are several steps involved into complete this assignment 
+
+First, we are asked to fit the data to a three layer feed forward neural network. We need to import the necessary libraries and create a network using the Keras library. 
+
 
 ## Computational Results
 
