@@ -87,8 +87,60 @@ print("Test Error: {:.2f}".format(test_error))
 ```
 
 we can also repeat this process using the first 10 and last 10 data points as training data
+
+```python
+X_train, Y_train = np.concatenate((X[:10], X[20:])), np.concatenate((Y[:10], Y[20:]))
+X_test, Y_test = X[10:20], Y[10:20]
+```
+
+Now to tarain a feedforward neural network on MNIST dataset. 
+To compute the first 20 PCA modes of the MNIST images, you cna preprocess the data by substracting the mean of the training set from eacch image. Then, we use SVD to compute the eigenvectors and eigenvalues of the covariance matrix of the preprocessed training data. 
+
+```python
+from sklearn.decomposition import PCA
+from tensorflow.keras.datasets import mnist
+
+# Load MNIST data
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
+
+# Reshape data to 2D and preprocess by subtracting mean
+X_train_flat = X_train.reshape(-1, 784) - X_train.reshape(-1, 784).mean(axis=0)
+
+# Compute first 20 PCA modes
+pca = PCA(n_components=20)
+pca.fit(X_train_flat)
+X_train_pca = pca.transform(X_train_flat)
+```
+
+We use the same method to a feedforward neural netowkr to classify the digits using Keras API. We also use [scikit-learn](https://scikit-learn.org/) to build a LSTM, SVM, and decision tree classfiiers so that we can compare the result later. 
+
 ## Computational Results
+From the first task, we can use the result using two different datasets to compare against each other. Specifically, we can compare the models 
+
+![image](https://user-images.githubusercontent.com/121909443/236701478-d0b12cc2-edd9-4021-a485-f4c09d64206d.png)
+> First 20 data points as training data and last 10 as testing dataset
+
+![image](https://user-images.githubusercontent.com/121909443/236701482-7adefdeb-804f-4777-8c0b-2c00f61d4cde.png)
+> First 10 and last 10 data points as training data and last 10 as testing dataset 
+
+We can see that when we are using first 10 and last 10 data points as training data and last 10 as testing dataset, training error is 12% lower and testing data is 3018% lower than the othercase. This is because neural network might be overfitting to the training data in the first case, which means that it is becoming too specialized to the training data and is not able to generalize well to new data. Since the first 20 data points might not be representative of the entire data set, the neural network might be learning specific features of this subset that are not present in the remaining 10 data points, leading to larger errors when tested on the latter.
+
+Moving on, we need to **compare the models fit in homework 1 to neural network in this assignment**
+
+To compare the models from homework one to neural netowrk in the previous task, we can use least square rror as a measure of their performance of the training and testing data. Recall that the least square error for each model on the 
+____ questions, shouldn't the LSE be smaller when you fit it on neural network?
 
 
+Lastly, after computing the first 20 PCA modes of the digit images and building a feed-forward neural network to classify the digits, we can compare the results of the neural network against LSTM, SVM and decision tree classifiers. 
+![image](https://user-images.githubusercontent.com/121909443/236702129-d2d9e49e-5cbe-4c73-90e9-eeec9b6144e3.png)
+(accuracy of SVM, decision tree, and LSTM model)
+
+Here is a breif comparison of their accuracy on the testset using different classifiers and neural network. 
+- Feedforward neural network: The accuracy of the three-layer feedforward neural network on the MNIST test set is 0.9729, which is a high accuracy compared to other classifiers.
+- LSTM: The accuracy of the LSTM classifier on the MNIST test set is 0.9269, which is lower than the accuracy of the feedforward neural network.
+- SVM: The accuracy of the SVM classifier on the MNIST test set is 0.7418, which is lower than the accuracy of the feedforward neural network and LSTM.
+- Decision tree: The accuracy of the decision tree classifier on the MNIST test set is 0.4131, which is significantly lower than the accuracy of other classifiers.
+
+Therefore, the feedforward neural network has the highest accuracy among the tested classifiers. However, it is worth noting that the performance of these classifiers can vary depending on the hyperparameters and specific implementation used.
 
 ## Summary and Conclusions
