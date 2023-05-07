@@ -45,7 +45,50 @@ There are several steps involved into complete this assignment
 
 First, we are asked to fit the data to a three layer feed forward neural network. We need to import the necessary libraries and create a network using the Keras library. 
 
+```python
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense
 
+X = np.arange(0,31)
+Y = np.array([30, 35, 33, 32, 34, 37, 39, 38, 36, 36, 37, 39, 42, 45, 45, 41,
+              40, 39, 42, 44, 47, 49, 50, 49, 46, 48, 50, 53, 55, 54, 53])
+
+# Define the model
+model = Sequential()
+model.add(Dense(10, input_dim=1, activation='relu'))
+model.add(Dense(5, activation='relu'))
+model.add(Dense(1, activation='linear'))
+
+# Compile the model
+model.compile(loss='mean_squared_error', optimizer='adam')
+
+# Fit the model
+model.fit(X, Y, epochs=1000, verbose=0)
+```
+
+> This is a neural network with 10 neurons in the input layer, 5 neurons in the hidden layer, and 1 neuron in the output layer. The model is compiled using the mean squared error loss function. The model is then trained for 100 epochs on the input data. 
+
+Next, we can fit the neural network using the first 20 data points as training data and the remaining 10 data as test dtata. Then we can compute the least square error of these models on the test data using the following code. 
+```python
+# Split data into training and test sets
+X_train, Y_train = X[:20], Y[:20]
+X_test, Y_test = X[20:], Y[20:]
+
+# Fit the model to the training data
+model.fit(X_train, Y_train, epochs=1000, verbose=0)
+
+# Compute the least square error for the training and test data
+train_error = np.mean(np.square(model.predict(X_train).flatten() - Y_train))
+test_error = np.mean(np.square(model.predict(X_test).flatten() - Y_test))
+
+print("Training Error: {:.2f}".format(train_error))
+print("Test Error: {:.2f}".format(test_error))
+```
+
+we can also repeat this process using the first 10 and last 10 data points as training data
 ## Computational Results
+
+
 
 ## Summary and Conclusions
