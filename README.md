@@ -132,7 +132,10 @@ ____ questions, shouldn't the LSE be smaller when you fit it on neural network?
 
 
 Lastly, after computing the first 20 PCA modes of the digit images and building a feed-forward neural network to classify the digits, we can compare the results of the neural network against LSTM, SVM and decision tree classifiers. 
+
+
 ![image](https://user-images.githubusercontent.com/121909443/236702129-d2d9e49e-5cbe-4c73-90e9-eeec9b6144e3.png)
+
 (accuracy of SVM, decision tree, and LSTM model)
 
 Here is a breif comparison of their accuracy on the testset using different classifiers and neural network. 
