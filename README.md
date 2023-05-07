@@ -144,3 +144,10 @@ Here is a breif comparison of their accuracy on the testset using different clas
 Therefore, the feedforward neural network has the highest accuracy among the tested classifiers. However, it is worth noting that the performance of these classifiers can vary depending on the hyperparameters and specific implementation used.
 
 ## Summary and Conclusions
+In this assignment, we applied three layer feedforward neural network to fit the given dataset of 31 points. We then trainied a feedforwar neural network on the MNIST dataset to classify digits and comapred the results with other classifiers including LSTM, SVM, and decision trees.
+
+In the first part of the assignment, we found that using the first 10 and last 10 data as training and 10 data points as testing data led a lwer error in comparison to using the first 20 data points as training data and the remaining 10 data points as testing data.
+
+Next, for the second part, we find the first 20 PCA modes of the digit images and build a feedforwar neural network. after comparing the results with other classifiers such as SVM, LSTM, and decision tree. We found that neural network achieved a relatively higher accuracy. It may perform better with further tuning and optimzation on the parameters. 
+
+Overall, this assignment gives a good opportunity to apply neural networks and other classifier to real world dataset such as MNIST. We explore different models and compare their performance which allows us to visualize and think about the appropriate model. Also, using the PCA can really improve the performance of the classifiers. In conclusion, this assignment is a good practice on the neural network and their applications, as well as introduced us to other common classifiers in machine learning in general. 
