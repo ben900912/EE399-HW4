@@ -127,8 +127,7 @@ We can see that when we are using first 10 and last 10 data points as training d
 
 Moving on, we need to **compare the models fit in homework 1 to neural network in this assignment**
 
-To compare the models from homework one to neural netowrk in the previous task, we can use least square rror as a measure of their performance of the training and testing data. Recall that the least square error for each model i homework1 are about 200
-
+To compare the models from homework one to neural netowrk in the previous task, we can use least square rror as a measure of their performance of the training and testing data. Recall that the least square error for each model i homework1 are about 200. This indicates that neural network as a better accuracy.
 
 Lastly, after computing the first 20 PCA modes of the digit images and building a feed-forward neural network to classify the digits, we can compare the results of the neural network against LSTM, SVM and decision tree classifiers. 
 
